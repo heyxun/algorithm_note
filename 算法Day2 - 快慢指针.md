@@ -12,17 +12,21 @@
 ###  疑点：为什么移动万非零元素后不用再填充0？
 数组刚创建时，若不主动填入元素，会默认全部填充0.
 
+## 优化前复杂度
 #### 时间复杂度 O(n)
 #### 空间复杂度 O(n)
 
 ## 要点二： 若不复制，如何优化？
 ### 使用双指针原地修改数组，空间复杂度变为常数了。
 
+## 优化后复杂度
+#### 时间复杂度 O(n)
+#### 空间复杂度 O(1) -- 原数组本身
 ### 疑点：那指针如何设计的？
 快指针i - for循环遍历数组
 慢指针index - ​​记录非零元素的写入位置​​（遍历阶段）；​确定零的填充起始位置​​（填充阶段）；​最终等于非零元素的个数​​。
 
-# 代码示例
+# 代码示例（快慢指针）
 ## Java
 ```JAVA
 class Solution{
@@ -38,13 +42,10 @@ class Solution{
     }
 }
 ```
-
+## python
 ```python
 from typing import List
 def moveZeros(self, nums: List[int]) -> None:
-    """
-    Do not return anything, modify nums in-place instead.
-    """
     index = 0
     for num in nums:
         if num != 0:
